@@ -122,6 +122,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (modal && btn) {
         btn.addEventListener('click', (e) => {
+            const href = btn.getAttribute('href');
+            const isNavigable =
+                href &&
+                href.trim() !== '' &&
+                href.trim() !== '#' &&
+                !href.trim().toLowerCase().startsWith('javascript:');
+
+            if (isNavigable) return;
+
             e.preventDefault();
             modal.classList.add('show');
         });
